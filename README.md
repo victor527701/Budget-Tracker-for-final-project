@@ -40,4 +40,109 @@ while (choice != 5) { }
 for (Transaction t : transactions) { }
 
 # 4. Exceptions (intro), debugging:
-There was multiple instances of debugging.
+There was multiple instances of debugging. For example, I added a try-catch block with the purpose being the case where the user inputs a non-integer. This redirects the user and prints a message to the console saying, "Invalid input". 
+
+try {
+    choice = Integer.parseInt(input);
+} catch (NumberFormatException e) {
+    System.out.println("Invalid input");
+}
+
+# 5. Methods, parameters, blocks, scope
+Methods are called on during my switch statements. 
+
+switch (choice) { // switch control flow
+                case 1:
+                    addTransaction(in);
+                    break;
+                case 2:
+                    viewTransactions();
+                    break;
+                case 3:
+                    saveToFile();
+                    break;
+                case 4:
+                    loadFromFile();
+                    break;
+                case 5:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+Each method is being called and used seperately. Each method has a special function that is unique to each condition.
+
+# 6. Arrays
+An array was used at the begining of my code:
+
+ArrayList<Transaction> transactions = new ArrayList<>();
+
+It stores a list of transaction and expands as you add onto it.
+
+# 7. Objects and classes
+Multiple classes were used in my code. I had a Transaction, IncomeTransaction, SpendingTransaction, and MyBudgetTracker class. Classes are blueprints, and are essentially used like that in my code. Example:
+
+class Transaction {
+    protected String name;
+    protected double amount;
+    protected String category;
+
+    public Transaction(String name, double amount, String category) {
+        this.name = name;
+        this.amount = amount;
+        this.category = category;
+    }
+
+    public String toString() {
+        return name + " - $" + amount + " (" + category + ")";
+    }
+}
+
+
+# 8. Abstract classes and interfaces 
+My Transaction class was an abstract class. 
+
+abstract class Transaction { ... }
+
+It is used for polymorphism through parent reference: 
+
+Transaction t = new IncomeTransaction(...);
+
+
+# 9. Files
+
+FileWriter fw = new FileWriter("budget.txt");
+BufferedReader br = new BufferedReader(new FileReader("budget.txt"));
+
+
+It is used to save balance and transactions to a file. It loads them back when program restarts. 
+
+# 11.Robustness & coding standards
+
+catch (Exception e) {
+    System.out.println("Something went wrong");
+}
+
+I used try/catch blocks everywhere user inputs are involved. I had clear variable names and consistent formatting and comments to ensure neat code.
+
+# 12. Multithreading 
+Thread clockThread = new Thread(() -> {
+    while (true) {
+        Thread.sleep(5000);
+        System.out.println("Tick");
+    }
+});
+
+It runs in the background whenever the code is being run. It ticks every 5 seconds due the thread.sleep(5000) and prints the date and time. 
+
+
+
+
+
+
+
+
+
+
+
